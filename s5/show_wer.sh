@@ -13,9 +13,14 @@ for model_type in mono tri1 tri2 tri3 sgmm sgmm_mmi_b0.1; do
     (   
         if [ $model_type == "sgmm_mmi_b0.1" ]; then
             for spk in $speakers; do
-                pushd cexp/sgmm_mmi_b0.1/$wav_type/$spk
-                ln -s decode_test_multi_it1 ./decode_test_multi
-                ln -s decode_test_single_it1 ./decode_test_single
+                if [ ! -d exp/$model_type/$spk ]; then 
+                    continue 
+                fi
+                pushd cexp/$model_type/$wav_type/$spk
+                if [ -d decode_test_multi_it1 ] && [ ! -d decode_test_multi ]; then
+                    ln -s decode_test_multi_it1 ./decode_test_multi
+                    ln -s decode_test_single_it1 ./decode_test_single
+                fi
                 popd
             done
         fi
