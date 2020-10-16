@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: align wav",
+            "type": "python",
+            "request": "launch",
+            "program": "s5/local/align_wav.py",
+            "console": "integratedTerminal",
+            "args": [
+                "/home/data/TORGO/F03/Session2/wav_arrayMic/0160.wav",
+                "/home/data/TORGO/F03/Session2/wav_headMic/0160.wav",
+                "-2392",
+                "1.wav",
+                "2.wav"
+            ]
+        },
+        {
             "name": "Python: Get WER",
             "type": "python",
             "request": "launch",

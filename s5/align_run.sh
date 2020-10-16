@@ -39,12 +39,12 @@ nj_decode=1
 set -euo pipefail
 
 data_all=data/all_speakers
+original=/home/data/TORGO
 
 # Data extraction
 if [ $stage -le 0 ]; then
     rm -rdff data/*
-    local/align_torgo_data.sh || exit 1
-    exit 0
+    local/align_torgo_data.sh $original $CORPUS || exit 1
     # Initial extraction of the data.
     local/torgo_data_prep.sh || exit 1
 fi
